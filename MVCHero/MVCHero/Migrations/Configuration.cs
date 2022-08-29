@@ -19,11 +19,11 @@
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
-            SeedRandomHeores();
+            SeedRandomHeroes();
             SeedRandomRatings();
         }
 
-        private void SeedRandomHeores()
+        private void SeedRandomHeroes()
         {
             string[] _hero_name = new string[] { "Batman", "Superman", "Green Lantern", "Wonder Woman", "Flash", "Aquaman" };
             int[] _hero_age = new int[] { 32, 120, 28, 220, 24, 30 };
