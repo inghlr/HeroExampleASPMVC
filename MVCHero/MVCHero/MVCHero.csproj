@@ -128,10 +128,15 @@
     <Compile Include="Migrations\202208290639306_InitialData.designer.cs">
       <DependentUpon>202208290639306_InitialData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202208290809463_AgeField.cs" />
+    <Compile Include="Migrations\202208290809463_AgeField.designer.cs">
+      <DependentUpon>202208290809463_AgeField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Hero.cs" />
     <Compile Include="Models\HeroContext.cs" />
     <Compile Include="Models\Rating.cs" />
+    <Compile Include="Models\Views\HeroListView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -316,6 +321,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202208290639306_InitialData.resx">
       <DependentUpon>202208290639306_InitialData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208290809463_AgeField.resx">
+      <DependentUpon>202208290809463_AgeField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

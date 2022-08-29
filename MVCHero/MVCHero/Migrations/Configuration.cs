@@ -26,6 +26,7 @@
         private void SeedRandomHeores()
         {
             string[] _hero_name = new string[] { "Batman", "Superman", "Green Lantern", "Wonder Woman", "Flash", "Aquaman" };
+            int[] _hero_age = new int[] { 32, 120, 28, 220, 24, 30 };
             string[] _hero_city = new string[] { "Arkham City", "Metrópolis", "Coast City", "Themyscira", "Central City", "Atlantis " };
             string[] _hero_image = new string[] {
                 "https://res.cloudinary.com/debabkluz/image/upload/v1661748787/heroes/batman_hlbeav.png",
@@ -49,6 +50,7 @@
                         Name = _hero_name[_heroSelected] + " - " + _id,
                         Picture = _hero_image[_heroSelected],
                         City = _hero_city[_heroSelected],
+                        Age = _hero_age[_heroSelected],
                     };
 
                     db.Heroes.Add(hero);
@@ -60,13 +62,14 @@
         private void SeedRandomRatings()
         {
             string[] _rating_name = new string[] { "Sheldon", "Rajesh", "Howard", "Stuart", "Leonard", "Will", "George" };
-            int _rating = GetRandomNumber(0, 10);
+            int _rating = 0;
             using (var db = new HeroContext())
             {
                 var heroes = db.Heroes.ToList();
                 int _rid = 1;
                 foreach (var hero in heroes)
                 {
+                    _rating = GetRandomNumber(1, 10);
                     for (int r = 0; r < _rating; r++)
                     {
                         var rating = new Rating()
