@@ -12,8 +12,15 @@ namespace MVCHero.Controllers
     {
         HeroContext db = new HeroContext();
         // GET: Hero
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            var itemsToSkip = (pageNumber - 1) * pageSize;
+
+            ViewBag.pageSize = pageSize;
+            ViewBag.pageNumber = pageNumber;
+
             var heroes = db.Heroes.Include("Ratings")
                          .Select(h => new HeroListView
                          { 
@@ -23,9 +30,13 @@ namespace MVCHero.Controllers
                              City = h.City,
                              Picture = h.Picture,
                              Ratings = h.Ratings,
+                             RatingsFiltered = h.Ratings.OrderByDescending(d => d.Date).Take(5).ToList(),
                              Rate = ((double)h.Ratings.Sum(s => s.Rate) / (double)h.Ratings.Count())
                          }).OrderByDescending(o => o.Rate);
-            return View(heroes.ToList());
+
+            ViewBag.pageCount = Math.Ceiling(((decimal)heroes.Count() / (decimal)pageSize));
+
+            return View(heroes.Skip(itemsToSkip).Take(pageSize).ToList());
         }
     }
 }

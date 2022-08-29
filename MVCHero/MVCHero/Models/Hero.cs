@@ -12,6 +12,9 @@ namespace MVCHero.Models
         public int Age { get; set; }
         public string City { get; set; }
         public string Picture { get; set; }
+        /// <summary>
+        /// List of Ratings
+        /// </summary>
         public ICollection<Rating> Ratings { get; set; }
     }
 }

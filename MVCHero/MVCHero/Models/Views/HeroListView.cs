@@ -12,7 +12,14 @@ namespace MVCHero.Models.Views
         public int Age { get; set; }
         public string City { get; set; }
         public string Picture { get; set; }
+        /// <summary>
+        /// List of Ratings
+        /// </summary>
         public ICollection<Rating> Ratings { get; set; }
+        /// <summary>
+        /// Auxiliar List to filter and take five to show on HeroList
+        /// </summary>
+        public ICollection<Rating> RatingsFiltered { get; set; }
         public double Rate { get; set; }
     }
 }
